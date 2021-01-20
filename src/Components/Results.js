@@ -15,11 +15,24 @@ export default function Results({dieHistory, showGraph}) {
         },
         series: [{
             name: 'Dice Roll',
-            data: [dieHistory[1], dieHistory[2], dieHistory[3], dieHistory[4], dieHistory[5], dieHistory[6]]
+            data: []
         }]
     })
     const updateChart = () => {
-        dieHistory[1] = graph.series[0].data[1] * 2
+        setGraph({
+            options: {
+                chart: {
+                    id: 'Die-Graph'
+                },
+                xaxis: {
+                    categories: [1, 2, 3, 4, 5, 6]
+                }
+            },
+            series: [{
+                name: 'Dice Roll',
+                data: [dieHistory[1], dieHistory[2], dieHistory[3], dieHistory[4], dieHistory[5], dieHistory[6]]
+            }]
+        })
     }
     console.log(graph)
     return (
